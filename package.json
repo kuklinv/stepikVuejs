@@ -1,0 +1,19 @@
+{
+  "name": "stepikvuejs",
+  "version": "1.0.0",
+  "description": "my try the Vue lib and other libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuklinv/stepikVuejs.git"
+  },
+  "author": "kuklinv",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kuklinv/stepikVuejs/issues"
+  },
+  "homepage": "https://github.com/kuklinv/stepikVuejs#readme"
+}
