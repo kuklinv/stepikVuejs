@@ -1,9 +1,9 @@
 * {
   letter-spacing: 0.05em;
 }
-.hide {
-  visibility: hidden;
-}
+/* .show {
+  display: none;
+} */
 .menu-btn {
   width: 30px;
   height: 40px;
