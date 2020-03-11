@@ -1,9 +1,10 @@
 * {
   letter-spacing: 0.05em;
 }
-/* .show {
-  display: none;
-} */
+.show {
+  /* display: block; */
+  height: 0;
+}
 .menu-btn {
   width: 30px;
   height: 40px;
@@ -59,6 +60,12 @@ ul {
   width: 15%;
   display: none;
   height: 100%;
+  overflow: hidden;
+  transition: height 2s;
+}
+
+.menu-wrapper.collapsed {
+  height: 0;
 }
 .home-content_wrapper {
   margin: 0 auto;
