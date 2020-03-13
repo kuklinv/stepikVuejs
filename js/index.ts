@@ -32,6 +32,8 @@
 
 // export * from "./TweenMax.min.js";
 
+let allContentWindow = document.querySelector(".content-wrapper"); // window
+
 var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu
 console.log(niceMenuBtn);
 var menuWraper = document.querySelector(".menu-wrapper");
@@ -93,3 +95,37 @@ chThemeBtn === null || chThemeBtn === void 0
         });
       }
     });
+
+let preview = document.querySelector(".preview-wrapper");
+console.log(preview);
+let themeSelectors = [...document.querySelectorAll(".theme-select")];
+let themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
+
+themeSelectorsWraper?.addEventListener("click", e => {
+  for (let element of themeSelectors) {
+    element.classList.remove("selected-theme");
+  }
+  let currentTarget = e.target;
+  if (currentTarget?.id === "indigo") {
+    preview?.classList.value = "preview-wrapper indigo-theme";
+  } else {
+    preview?.classList.value = "preview-wrapper black-theme";
+  }
+});
+
+allContentWindow?.addEventListener("click", () => {
+  gsap.to(editPopup, 1, {
+    x: "-200%",
+    display: "block",
+    height: "0vh",
+    width: "80%",
+    ease: Power3.easeOut
+  });
+});
+
+let switchPreviewColorRadioBtn = [
+  ...document.querySelectorAll(".radio-item>label>span")
+];
+//textContent:'Blue'.....etc...
+
+// best way => get all child nodes for preview panel
