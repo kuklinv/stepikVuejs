@@ -1,10 +1,10 @@
 // from main.js
 /*
 // $(function(){
-//     var includes = $('[data-include]');
+//     let includes = $('[data-include]');
 //     //document.querySelector("[data-include]").innerText;
 //     jQuery.each(includes, function(){
-//         var file = 'components/' + $(this).data('include') + '.html';
+//         let file = 'components/' + $(this).data('include') + '.html';
 //         $(this).load(file);
 //     });
 // });
@@ -37,13 +37,12 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 // export * from "./TweenMax.min.js";
 var allContentWindow = document.querySelector(".content-wrapper"); // window
 var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu
-console.log(niceMenuBtn);
+// console.log(niceMenuBtn);
 var menuWraper = document.querySelector(".menu-wrapper");
-niceMenuBtn.addEventListener("click", function () {
-    console.assert("yes");
-    menuWraper.classList.toggle("show");
+niceMenuBtn === null || niceMenuBtn === void 0 ? void 0 : niceMenuBtn.addEventListener("click", function () {
+    menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.classList.toggle("show");
 });
-// niceMenuBtn.addEventListener("click", () => {  //* TODO: i think good var: https://javascript.ru/forum/misc/45183-slidetoggle-bez-ispolzovaniya-jquery.html
+// niceMenuBtn.addEventListener("click", () => {  //* TODO: i think good let: https://javascript.ru/forum/misc/45183-slidetoggle-bez-ispolzovaniya-jquery.html
 //   menuWraper.classList.toggle("collapsed");
 // });
 // niceMenuBtn.addEventListener("click", function() {
@@ -55,7 +54,7 @@ niceMenuBtn.addEventListener("click", function () {
 //   }
 // });
 // console.log(menuWraper);
-// var menuWraper = gsap.from(".menu-wrapper", 1, {
+// let menuWraper = gsap.from(".menu-wrapper", 1, {
 //   height: 0,
 //   paused: true,
 //   reversed: true
@@ -70,7 +69,7 @@ var chThemeBtn = document.querySelector("#edit"); //* change theme button
 chThemeBtn === null || chThemeBtn === void 0
     ? void 0
     : chThemeBtn.addEventListener("click", function (event) {
-        // var target = event.target;
+        // let target = event.target;
         // console.log(target);
         this.classList.remove("pulse"); //* not pulse button when first click
         editPopupSwitcher = !editPopupSwitcher;
@@ -95,7 +94,6 @@ chThemeBtn === null || chThemeBtn === void 0
         }
     });
 var preview = document.querySelector(".preview-wrapper");
-console.log(preview);
 var themeSelectors = __spreadArrays(document.querySelectorAll(".theme-select"));
 var themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
 themeSelectorsWraper === null || themeSelectorsWraper === void 0 ? void 0 : themeSelectorsWraper.addEventListener("click", function (e) {
@@ -121,5 +119,13 @@ allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWi
     });
 });
 var switchPreviewColorRadioBtn = __spreadArrays(document.querySelectorAll(".radio-item>label>span"));
-//textContent:'Blue'.....etc...
-// best way => get all child nodes for preview panel
+console.log(switchPreviewColorRadioBtn);
+var previewChildes = function () {
+    var previewNodes = [];
+    var progressLine = document.querySelector('#progress-line-preview');
+    var previewBtn = document.querySelector('#preview-btn');
+    previewNodes.push(progressLine);
+    previewNodes.push(previewBtn);
+    return previewNodes;
+};
+switchPreviewColorRadioBtn === null || switchPreviewColorRadioBtn === void 0 ? void 0 : switchPreviewColorRadioBtn.addEventListener('click'); //*? TODO: not eventListener on element[]
