@@ -119,6 +119,7 @@ allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWi
     });
 });
 var switchPreviewColorRadioBtn = __spreadArrays(document.querySelectorAll(".radio-item>label>span"));
+var previewRadioGroup = document.querySelector('#preview-radio-group');
 console.log(switchPreviewColorRadioBtn);
 var previewChildes = function () {
     var previewNodes = [];
@@ -128,4 +129,23 @@ var previewChildes = function () {
     previewNodes.push(previewBtn);
     return previewNodes;
 };
-switchPreviewColorRadioBtn === null || switchPreviewColorRadioBtn === void 0 ? void 0 : switchPreviewColorRadioBtn.addEventListener('click'); //*? TODO: not eventListener on element[]
+// previewRadioGroup?.addEventListener('click', (e)=>{
+//   let target = e.target;
+//   console.log(target.innerText);
+//   if(target.innerText == 'Blue'){
+//
+//   } else if(target.innerText == 'Orange'){
+//
+//   } else if(target.innerText == 'Cyan'){
+//
+//   }
+// });
+previewRadioGroup === null || previewRadioGroup === void 0 ? void 0 : previewRadioGroup.addEventListener('click', function (event) {
+    var target = event.target.closest('.radio-item>label>span');
+    if (!target) {
+        return;
+    }
+    var tColor = target.style.color;
+    previewChildes().forEach(function (e) { return e.style.backgroundColor = tColor; });
+    return;
+});

@@ -124,6 +124,7 @@ allContentWindow?.addEventListener("click", () => {
 let switchPreviewColorRadioBtn = [
     ...document.querySelectorAll(".radio-item>label>span")
 ];
+let previewRadioGroup = document.querySelector('#preview-radio-group');
 console.log(switchPreviewColorRadioBtn);
 let previewChildes = function () {
     let previewNodes = [];
@@ -134,4 +135,25 @@ let previewChildes = function () {
     return previewNodes;
 };
 
-switchPreviewColorRadioBtn?.addEventListener('click'); //*? TODO: not eventListener on element[]
+// previewRadioGroup?.addEventListener('click', (e)=>{
+//   let target = e.target;
+//   console.log(target.innerText);
+//   if(target.innerText == 'Blue'){
+//
+//   } else if(target.innerText == 'Orange'){
+//
+//   } else if(target.innerText == 'Cyan'){
+//
+//   }
+// });
+
+previewRadioGroup?.addEventListener('click', (event)=>{
+  let target = event.target.closest('.radio-item>label>span');
+  if(!target) {
+    return;
+  }
+  let tColor = target.style.color;
+  previewChildes().forEach((e)=>e.style.backgroundColor = tColor);
+  return;
+});
+
