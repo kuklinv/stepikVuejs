@@ -36,6 +36,7 @@ let allContentWindow = document.querySelector(".content-wrapper"); // window
 
 let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu
 // console.log(niceMenuBtn);
+// TODO: not work button wrapper;
 let menuWraper = document.querySelector(".menu-wrapper");
 niceMenuBtn?.addEventListener("click", () => {
     menuWraper?.classList.toggle("show");
@@ -134,19 +135,7 @@ let previewChildes = function () {
     previewNodes.push(previewBtn);
     return previewNodes;
 };
-
-// previewRadioGroup?.addEventListener('click', (e)=>{
-//   let target = e.target;
-//   console.log(target.innerText);
-//   if(target.innerText == 'Blue'){
-//
-//   } else if(target.innerText == 'Orange'){
-//
-//   } else if(target.innerText == 'Cyan'){
-//
-//   }
-// });
-
+// * ! important
 previewRadioGroup?.addEventListener('click', (event)=>{
   let target = event.target.closest('.radio-item>label>span');
   if(!target) {
@@ -156,4 +145,7 @@ previewRadioGroup?.addEventListener('click', (event)=>{
   previewChildes().forEach((e)=>e.style.backgroundColor = tColor);
   return;
 });
+
+// TODO: next - create object for storage our theme and save this to LocalStorage
+// TODO: next - update our theme with created object
 
