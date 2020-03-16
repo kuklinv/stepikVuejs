@@ -16,6 +16,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
+var _a, _b, _c, _d;
 // TODO: for mini menu in right corner - slideToggle onclick
 // function open(element: HTMLElement): void {
 //   element.classList.add("show");
@@ -36,11 +37,18 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 //https://pavelivanov.ru/blog/%D0%BA%D0%B0%D0%BA-%D1%80%D0%B5%D0%B0%D0%BB%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D0%BD%D0%B0%D0%BB%D0%BE%D0%B3-jquery-slidetoggle-%D0%BD%D0%B0-%D1%87%D0%B8%D1%81%D1%82%D0%BE%D0%BC-javascri/
 // export * from "./TweenMax.min.js";
 var allContentWindow = document.querySelector(".content-wrapper"); // window
-var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu
-// console.log(niceMenuBtn);
+var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!// TODO: change to select menu!!!
+console.log(niceMenuBtn);
+// TODO: not work button wrapper;
 var menuWraper = document.querySelector(".menu-wrapper");
-niceMenuBtn === null || niceMenuBtn === void 0 ? void 0 : niceMenuBtn.addEventListener("click", function () {
-    menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.classList.toggle("show");
+(_a = niceMenuBtn) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function (event) {
+    var _a;
+    var target = event.target;
+    console.log(target);
+    if (!target) {
+        return;
+    }
+    (_a = menuWraper) === null || _a === void 0 ? void 0 : _a.classList.toggle('show'); // TODO: not work <div class="grey darken-3 menu-wrapper" style="opacity:.5"></div>
 });
 // niceMenuBtn.addEventListener("click", () => {  //* TODO: i think good let: https://javascript.ru/forum/misc/45183-slidetoggle-bez-ispolzovaniya-jquery.html
 //   menuWraper.classList.toggle("collapsed");
@@ -96,20 +104,21 @@ chThemeBtn === null || chThemeBtn === void 0
 var preview = document.querySelector(".preview-wrapper");
 var themeSelectors = __spreadArrays(document.querySelectorAll(".theme-select"));
 var themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
-themeSelectorsWraper === null || themeSelectorsWraper === void 0 ? void 0 : themeSelectorsWraper.addEventListener("click", function (e) {
+(_b = themeSelectorsWraper) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function (e) {
+    var _a, _b, _c;
     for (var _i = 0, themeSelectors_1 = themeSelectors; _i < themeSelectors_1.length; _i++) {
         var element = themeSelectors_1[_i];
         element.classList.remove("selected-theme");
     }
     var currentTarget = e.target;
-    if ((currentTarget === null || currentTarget === void 0 ? void 0 : currentTarget.id) === "indigo") {
-        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper indigo-theme";
+    if (((_a = currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "indigo") {
+        (_b = preview) === null || _b === void 0 ? void 0 : _b.classList.value = "preview-wrapper indigo-theme";
     }
     else {
-        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper black-theme";
+        (_c = preview) === null || _c === void 0 ? void 0 : _c.classList.value = "preview-wrapper black-theme";
     }
 });
-allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWindow.addEventListener("click", function () {
+(_c = allContentWindow) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
     gsap.to(editPopup, 1, {
         x: "-200%",
         display: "block",
@@ -129,18 +138,8 @@ var previewChildes = function () {
     previewNodes.push(previewBtn);
     return previewNodes;
 };
-// previewRadioGroup?.addEventListener('click', (e)=>{
-//   let target = e.target;
-//   console.log(target.innerText);
-//   if(target.innerText == 'Blue'){
-//
-//   } else if(target.innerText == 'Orange'){
-//
-//   } else if(target.innerText == 'Cyan'){
-//
-//   }
-// });
-previewRadioGroup === null || previewRadioGroup === void 0 ? void 0 : previewRadioGroup.addEventListener('click', function (event) {
+// * ! important
+(_d = previewRadioGroup) === null || _d === void 0 ? void 0 : _d.addEventListener('click', function (event) {
     var target = event.target.closest('.radio-item>label>span');
     if (!target) {
         return;
@@ -149,3 +148,16 @@ previewRadioGroup === null || previewRadioGroup === void 0 ? void 0 : previewRad
     previewChildes().forEach(function (e) { return e.style.backgroundColor = tColor; });
     return;
 });
+// TODO: next - create object for storage our theme and save this to LocalStorage
+// TODO: next - update our theme with created object
+var themeStorage = {
+    themeType: 'indigo-theme',
+    secondaryColor: '#4ebdde4',
+    update: function () {
+        var _a, _b, _c;
+        (_a = document.querySelector("#edit")) === null || _a === void 0 ? void 0 : _a.style.backgroundColor = this.secondaryColor;
+        (_b = document.querySelector(".content-wrapper")) === null || _b === void 0 ? void 0 : _b.classList.value = "content-wrapper " + this.themeType;
+        (_c = document.querySelector(".nav")) === null || _c === void 0 ? void 0 : _c.classList.value = "nav-wrapper navbar-fixed indigo-theme " + this.themeType;
+        // document.querySelector('ul>.menu-btn')?
+    }
+};
