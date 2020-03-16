@@ -2,8 +2,7 @@
   letter-spacing: 0.05em;
 }
 .show {
-  /* display: block; */
-  height: 0;
+  display: block;
 }
 .menu-btn {
   width: 30px;

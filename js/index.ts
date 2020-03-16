@@ -34,12 +34,17 @@
 
 let allContentWindow = document.querySelector(".content-wrapper"); // window
 
-let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu
-// console.log(niceMenuBtn);
+let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!// TODO: change to select menu!!!
+
+console.log(niceMenuBtn);
 // TODO: not work button wrapper;
 let menuWraper = document.querySelector(".menu-wrapper");
-niceMenuBtn?.addEventListener("click", () => {
-    menuWraper?.classList.toggle("show");
+niceMenuBtn?.addEventListener("click", (event) => {
+  let target = event.target;
+  console.log(target);
+  if (!target){
+      return;
+  } menuWraper?.classList.toggle('show'); // TODO: not work <div class="grey darken-3 menu-wrapper" style="opacity:.5"></div>
 });
 
 // niceMenuBtn.addEventListener("click", () => {  //* TODO: i think good let: https://javascript.ru/forum/misc/45183-slidetoggle-bez-ispolzovaniya-jquery.html
@@ -149,3 +154,13 @@ previewRadioGroup?.addEventListener('click', (event)=>{
 // TODO: next - create object for storage our theme and save this to LocalStorage
 // TODO: next - update our theme with created object
 
+let themeStorage = {
+    themeType: 'indigo-theme',
+    secondaryColor: '#4ebdde4',
+    update: function(){
+        document.querySelector("#edit")?.style.backgroundColor = this.secondaryColor;
+        document.querySelector(".content-wrapper")?.classList.value = `content-wrapper ${this.themeType}`;
+        document.querySelector(".nav")?.classList.value = `nav-wrapper navbar-fixed indigo-theme ${this.themeType}`;
+        // document.querySelector('ul>.menu-btn')?
+    }
+};
