@@ -16,7 +16,6 @@ let menuWraper = document.querySelector(".menu-wrapper");
 let menuSwitcher = false;
 niceMenuBtn?.addEventListener("click", (event) => {
   let target = event.target;
-  console.log(target);
   if (!target){
       return;
   } 
@@ -60,6 +59,11 @@ let preview = document.querySelector(".preview-wrapper");
 let themeSelectors = [...document.querySelectorAll(".theme-select")];
 let themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
 
+let currentTheme = {
+    themeType: 'indigo-theme',
+    secondaryColor: '#4ebdde4',
+}
+
 themeSelectorsWraper?.addEventListener("click", e => {
     for (let element of themeSelectors) {
         element.classList.remove("selected-theme");
@@ -67,8 +71,10 @@ themeSelectorsWraper?.addEventListener("click", e => {
     let currentTarget = e.target;
     if (currentTarget?.id === "indigo") {
         preview?.classList.value = "preview-wrapper indigo-theme";
+        currentTheme.themeType = 'indigo-theme';
     } else {
         preview?.classList.value = "preview-wrapper black-theme";
+        currentTheme.themeType = 'black-theme';
     }
 });
 
@@ -86,7 +92,6 @@ let switchPreviewColorRadioBtn = [
     ...document.querySelectorAll(".radio-item>label>span")
 ];
 let previewRadioGroup = document.querySelector('#preview-radio-group');
-console.log(switchPreviewColorRadioBtn);
 let previewChildes = function () {
     let previewNodes = [];
     let progressLine = document.querySelector('#progress-line-preview');
@@ -103,6 +108,7 @@ previewRadioGroup?.addEventListener('click', (event)=>{
   }
   let tColor = target.style.color;
   previewChildes().forEach((e)=>e.style.backgroundColor = tColor);
+  currentTheme.secondaryColor = target.style.color;
   return;
 });
 
@@ -116,6 +122,21 @@ let themeStorage = {
         document.querySelector("#edit")?.style.backgroundColor = this.secondaryColor;
         document.querySelector(".content-wrapper")?.classList.value = `content-wrapper ${this.themeType}`;
         document.querySelector(".nav")?.classList.value = `nav-wrapper navbar-fixed indigo-theme ${this.themeType}`;
-        // document.querySelector('ul>.menu-btn')?
+        let menuItem = [...document.querySelector('.menu-btn')?.childNodes];
+        menuItem.forEach((el)=>{
+        if(el.nodeType !== 3){
+          el.style.backgroundColor = this.secondaryColor;
+        }
+        });
+    localStorage.setItem('themeType', this.themeType);
+    localStorage.setItem('secondaryColor', this.secondaryColor);
     }
 };
+
+
+
+document.querySelector("#save-theme-btn")?.addEventListener("click",()=>{
+themeStorage.themeType = currentTheme.themeType;
+themeStorage.secondaryColor = currentTheme.secondaryColor;
+themeStorage.update();
+});

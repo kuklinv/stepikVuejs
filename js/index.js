@@ -16,7 +16,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-var _a, _b, _c, _d;
+var _a, _b, _c, _d, _e;
 var allContentWindow = document.querySelector(".content-wrapper"); // window
 var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!// TODO: change to select menu!!!
 var menuWraper = document.querySelector(".menu-wrapper");
@@ -24,7 +24,6 @@ var menuSwitcher = false;
 (_a = niceMenuBtn) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function (event) {
     var _a, _b;
     var target = event.target;
-    console.log(target);
     if (!target) {
         return;
     }
@@ -67,6 +66,10 @@ chThemeBtn === null || chThemeBtn === void 0
 var preview = document.querySelector(".preview-wrapper");
 var themeSelectors = __spreadArrays(document.querySelectorAll(".theme-select"));
 var themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
+var currentTheme = {
+    themeType: 'indigo-theme',
+    secondaryColor: '#4ebdde4'
+};
 (_b = themeSelectorsWraper) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function (e) {
     var _a, _b, _c;
     for (var _i = 0, themeSelectors_1 = themeSelectors; _i < themeSelectors_1.length; _i++) {
@@ -76,9 +79,11 @@ var themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
     var currentTarget = e.target;
     if (((_a = currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "indigo") {
         (_b = preview) === null || _b === void 0 ? void 0 : _b.classList.value = "preview-wrapper indigo-theme";
+        currentTheme.themeType = 'indigo-theme';
     }
     else {
         (_c = preview) === null || _c === void 0 ? void 0 : _c.classList.value = "preview-wrapper black-theme";
+        currentTheme.themeType = 'black-theme';
     }
 });
 (_c = allContentWindow) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
@@ -92,7 +97,6 @@ var themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
 });
 var switchPreviewColorRadioBtn = __spreadArrays(document.querySelectorAll(".radio-item>label>span"));
 var previewRadioGroup = document.querySelector('#preview-radio-group');
-console.log(switchPreviewColorRadioBtn);
 var previewChildes = function () {
     var previewNodes = [];
     var progressLine = document.querySelector('#progress-line-preview');
@@ -109,6 +113,7 @@ var previewChildes = function () {
     }
     var tColor = target.style.color;
     previewChildes().forEach(function (e) { return e.style.backgroundColor = tColor; });
+    currentTheme.secondaryColor = target.style.color;
     return;
 });
 // TODO: next - create object for storage our theme and save this to LocalStorage
@@ -117,10 +122,23 @@ var themeStorage = {
     themeType: 'indigo-theme',
     secondaryColor: '#4ebdde4',
     update: function () {
-        var _a, _b, _c;
+        var _this = this;
+        var _a, _b, _c, _d;
         (_a = document.querySelector("#edit")) === null || _a === void 0 ? void 0 : _a.style.backgroundColor = this.secondaryColor;
         (_b = document.querySelector(".content-wrapper")) === null || _b === void 0 ? void 0 : _b.classList.value = "content-wrapper " + this.themeType;
         (_c = document.querySelector(".nav")) === null || _c === void 0 ? void 0 : _c.classList.value = "nav-wrapper navbar-fixed indigo-theme " + this.themeType;
-        // document.querySelector('ul>.menu-btn')?
+        var menuItem = __spreadArrays((_d = document.querySelector('.menu-btn')) === null || _d === void 0 ? void 0 : _d.childNodes);
+        menuItem.forEach(function (el) {
+            if (el.nodeType !== 3) {
+                el.style.backgroundColor = _this.secondaryColor;
+            }
+        });
+        localStorage.setItem('themeType', this.themeType);
+        localStorage.setItem('secondaryColor', this.secondaryColor);
     }
 };
+(_e = document.querySelector("#save-theme-btn")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", function () {
+    themeStorage.themeType = currentTheme.themeType;
+    themeStorage.secondaryColor = currentTheme.secondaryColor;
+    themeStorage.update();
+});
