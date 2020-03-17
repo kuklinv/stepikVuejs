@@ -137,6 +137,15 @@ var themeStorage = {
         localStorage.setItem('secondaryColor', this.secondaryColor);
     }
 };
+document.addEventListener('DOMContentLoaded', function () {
+    var sColor = localStorage.getItem('secondaryColor'); // its result !!!!!! main result
+    var themeType = localStorage.getItem('themeType');
+    if (sColor !== null && themeType !== null) {
+        themeStorage.secondaryColor = sColor;
+        themeStorage.themeType = themeType;
+    }
+    themeStorage.update();
+});
 (_e = document.querySelector("#save-theme-btn")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", function () {
     themeStorage.themeType = currentTheme.themeType;
     themeStorage.secondaryColor = currentTheme.secondaryColor;

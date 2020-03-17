@@ -133,7 +133,16 @@ let themeStorage = {
     }
 };
 
+document.addEventListener('DOMContentLoaded',function () { // for save theme betwean reloads page - -use localStorage!!!!!!!!!!
+    let sColor = localStorage.getItem('secondaryColor');   // its result !!!!!! main result
+    let themeType = localStorage.getItem('themeType');
 
+    if (sColor!==null && themeType!==null){
+        themeStorage.secondaryColor = sColor;
+        themeStorage.themeType = themeType;
+    }
+    themeStorage.update();
+});
 
 document.querySelector("#save-theme-btn")?.addEventListener("click",()=>{
 themeStorage.themeType = currentTheme.themeType;
