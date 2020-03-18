@@ -23,13 +23,20 @@ var tabs = [
         contentLink: 'http://http://www.devcod.pro/',
         contentLinkText: 'www.devcod.pro/',
         contentText: 'visit me'
-    },
+    }
 ];
 (_a = document.querySelector('.tabs_container')) === null || _a === void 0 ? void 0 : _a.innerHTML = TabList(tabs);
 function TabContent(tab) {
-    return "<div class=\"tabs_content_container\" style=\"display: block\">\n                <a href=\"" + tab.contentLink + "\" target=\"_blank\">" + tab.contentLinkText + "</a>   //TODO: not awesom look\n                <p>" + tab.contentText + "</p>\n</div>";
+    return "<div class=\"tabs_content_container\" style=\"display: block\">\n                <a href=\"" + tab.contentLink + "\" target=\"_blank\">" + tab.contentLinkText + "</a>   \n                <p>" + tab.contentText + "</p>\n</div>";
 }
-(_b = document.querySelector('.tab-link_tab')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function () {
+// let tabsLink = [...document.querySelectorAll('.tab-link_tab')]; //TODO: not?
+var tabsContainer = document.querySelector('.tabs_container');
+(_b = tabsContainer) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function (event) {
     var _a;
-    (_a = document.querySelector('.tab-content_wrapper')) === null || _a === void 0 ? void 0 : _a.innerHTML = TabContent(tabs[+this.id]); //TODO: not work with all selectors (only first) and not hide information on second clik - need sweetcher
+    var target = event.target;
+    if (target.tagName !== 'SPAN') {
+        return;
+    }
+    //document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+this.id]);  //TODO: not work with all selectors (only first) and not hide information on second clik - need sweetcher
+    (_a = document.querySelector('.tab-content_wrapper')) === null || _a === void 0 ? void 0 : _a.innerHTML = TabContent(tabs.filter(function (el) { return el['name'] == target.innerHTML; })); //TODO: not working yet
 });
