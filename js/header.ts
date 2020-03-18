@@ -1,4 +1,4 @@
-let navHeader = document.querySelector('#navbar-header');
+let navHeaderEl = document.querySelector('#navbar-header');
 
 class NavBarHeader {
     constructor(str: string | null) {
@@ -15,14 +15,14 @@ class NavBarHeader {
     }
 
     set greeting(str : string){
-        this.greeting = str;
+        this.greetMsg = str;
     }
 
     get greeting(){
-        return this.greeting;
+        return this.greetMsg;
     }
 
-    renderHeader(){
+    get renderHeader(){
         return `
         <p>${this.startString},<span id="userName" style="font-weight: bold">${this.name}</span>,
         ${this.greeting===undefined||this.greeting===' '?'как сегодня настрой?':this.greeting}</p>
@@ -50,12 +50,12 @@ window.onload = function () {
 
     navheader.name = localStorage.getItem('UserName');
 
-    navHeaderElem.innerHTML = navheader.renderHeader;  // TODO: NOT UNDERSTAND
-    // navHeaderElem.innerHTML = navheader.renderHeader;
+    navHeaderEl.innerHTML = navheader.renderHeader;  // TODO: not work and understand
     Uname = document.querySelector('#userName');
 
     Uname.addEventListener('click',function () {
         let newName = prompt('Как к вам обращаться?',localStorage.getItem('UserName'));
+        localStorage.setItem('UserName', newName);
         navheader.name = newName;
     })
 };

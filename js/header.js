@@ -1,4 +1,4 @@
-var navHeader = document.querySelector('#navbar-header');
+var navHeaderEl = document.querySelector('#navbar-header');
 var NavBarHeader = /** @class */ (function () {
     function NavBarHeader(str) {
         this.startString = str;
@@ -16,17 +16,21 @@ var NavBarHeader = /** @class */ (function () {
     });
     Object.defineProperty(NavBarHeader.prototype, "greeting", {
         get: function () {
-            return this.greeting;
+            return this.greetMsg;
         },
         set: function (str) {
-            this.greeting = str;
+            this.greetMsg = str;
         },
         enumerable: true,
         configurable: true
     });
-    NavBarHeader.prototype.renderHeader = function () {
-        return "\n        <p>" + this.startString + ",<span id=\"userName\" style=\"font-weight: bold\">" + this.name + "</span>,\n        " + (this.greeting === undefined || this.greeting === ' ' ? 'как сегодня настрой?' : this.greeting) + "</p>\n        ";
-    };
+    Object.defineProperty(NavBarHeader.prototype, "renderHeader", {
+        get: function () {
+            return "\n        <p>" + this.startString + ",<span id=\"userName\" style=\"font-weight: bold\">" + this.name + "</span>,\n        " + (this.greeting === undefined || this.greeting === ' ' ? 'как сегодня настрой?' : this.greeting) + "</p>\n        ";
+        },
+        enumerable: true,
+        configurable: true
+    });
     NavBarHeader.prototype.updateName = function () {
         var nameBlocks = document.querySelector('#userName');
         console.log(nameBlocks);
@@ -46,11 +50,11 @@ window.onload = function () {
         localStorage.setItem('UserName', newName);
     }
     navheader.name = localStorage.getItem('UserName');
-    navHeaderElem.innerHTML = navheader.renderHeader; // TODO: NOT UNDERSTAND
-    // navHeaderElem.innerHTML = navheader.renderHeader;
+    navHeaderEl.innerHTML = navheader.renderHeader; // TODO: not work and understand
     Uname = document.querySelector('#userName');
     Uname.addEventListener('click', function () {
         var newName = prompt('Как к вам обращаться?', localStorage.getItem('UserName'));
+        localStorage.setItem('UserName', newName);
         navheader.name = newName;
     });
 };

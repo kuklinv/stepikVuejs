@@ -15,16 +15,16 @@ let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
 let menuWraper = document.querySelector(".menu-wrapper");
 let menuSwitcher = false;
 niceMenuBtn?.addEventListener("click", (event) => {
-  let target = event.target;
-  if (!target){
-      return;
-  } 
-  menuSwitcher = !menuSwitcher;
-  if(menuSwitcher) {
-    menuWraper?.style.display = 'block';
-  } else {
-    menuWraper?.style.display = 'none';
-  }
+    let target = event.target;
+    if (!target) {
+        return;
+    }
+    menuSwitcher = !menuSwitcher;
+    if (menuSwitcher) {
+        menuWraper?.style.display = 'block';
+    } else {
+        menuWraper?.style.display = 'none';
+    }
 });
 
 let editPopupSwitcher = false;
@@ -101,15 +101,15 @@ let previewChildes = function () {
     return previewNodes;
 };
 // * ! important
-previewRadioGroup?.addEventListener('click', (event)=>{
-  let target = event.target.closest('.radio-item>label>span');
-  if(!target) {
+previewRadioGroup?.addEventListener('click', (event) => {
+    let target = event.target.closest('.radio-item>label>span');
+    if (!target) {
+        return;
+    }
+    let tColor = target.style.color;
+    previewChildes().forEach((e) => e.style.backgroundColor = tColor);
+    currentTheme.secondaryColor = target.style.color;
     return;
-  }
-  let tColor = target.style.color;
-  previewChildes().forEach((e)=>e.style.backgroundColor = tColor);
-  currentTheme.secondaryColor = target.style.color;
-  return;
 });
 
 // TODO: next - create object for storage our theme and save this to LocalStorage
@@ -118,34 +118,34 @@ previewRadioGroup?.addEventListener('click', (event)=>{
 let themeStorage = {
     themeType: 'indigo-theme',
     secondaryColor: '#4ebdde4',
-    update: function(){
+    update: function () {
         document.querySelector("#edit")?.style.backgroundColor = this.secondaryColor;
         document.querySelector(".content-wrapper")?.classList.value = `content-wrapper ${this.themeType}`;
         document.querySelector(".nav")?.classList.value = `nav-wrapper navbar-fixed indigo-theme ${this.themeType}`;
         let menuItem = [...document.querySelector('.menu-btn')?.childNodes];
-        menuItem.forEach((el)=>{
-        if(el.nodeType !== 3){
-          el.style.backgroundColor = this.secondaryColor;
-        }
+        menuItem.forEach((el) => {
+            if (el.nodeType !== 3) {
+                el.style.backgroundColor = this.secondaryColor;
+            }
         });
-    localStorage.setItem('themeType', this.themeType);
-    localStorage.setItem('secondaryColor', this.secondaryColor);
+        localStorage.setItem('themeType', this.themeType);
+        localStorage.setItem('secondaryColor', this.secondaryColor);
     }
 };
 
-document.addEventListener('DOMContentLoaded',function () { // for save theme betwean reloads page - -use localStorage!!!!!!!!!!
+document.addEventListener('DOMContentLoaded', function () { // for save theme betwean reloads page - -use localStorage!!!!!!!!!!
     let sColor = localStorage.getItem('secondaryColor');   // its result !!!!!! main result
     let themeType = localStorage.getItem('themeType');
 
-    if (sColor!==null && themeType!==null){
+    if (sColor !== null && themeType !== null) {
         themeStorage.secondaryColor = sColor;
         themeStorage.themeType = themeType;
     }
     themeStorage.update();
 });
 
-document.querySelector("#save-theme-btn")?.addEventListener("click",()=>{
-themeStorage.themeType = currentTheme.themeType;
-themeStorage.secondaryColor = currentTheme.secondaryColor;
-themeStorage.update();
+document.querySelector("#save-theme-btn")?.addEventListener("click", () => {
+    themeStorage.themeType = currentTheme.themeType;
+    themeStorage.secondaryColor = currentTheme.secondaryColor;
+    themeStorage.update();
 });

@@ -30,8 +30,7 @@ var menuSwitcher = false;
     menuSwitcher = !menuSwitcher;
     if (menuSwitcher) {
         (_a = menuWraper) === null || _a === void 0 ? void 0 : _a.style.display = 'block';
-    }
-    else {
+    } else {
         (_b = menuWraper) === null || _b === void 0 ? void 0 : _b.style.display = 'none';
     }
 });
@@ -52,8 +51,7 @@ chThemeBtn === null || chThemeBtn === void 0
                 width: "50%",
                 ease: Back.easeOut
             });
-        }
-        else {
+        } else {
             gsap.to(editPopup, 1, {
                 x: "-200%",
                 display: "block",
@@ -80,8 +78,7 @@ var currentTheme = {
     if (((_a = currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "indigo") {
         (_b = preview) === null || _b === void 0 ? void 0 : _b.classList.value = "preview-wrapper indigo-theme";
         currentTheme.themeType = 'indigo-theme';
-    }
-    else {
+    } else {
         (_c = preview) === null || _c === void 0 ? void 0 : _c.classList.value = "preview-wrapper black-theme";
         currentTheme.themeType = 'black-theme';
     }
@@ -112,7 +109,9 @@ var previewChildes = function () {
         return;
     }
     var tColor = target.style.color;
-    previewChildes().forEach(function (e) { return e.style.backgroundColor = tColor; });
+    previewChildes().forEach(function (e) {
+        return e.style.backgroundColor = tColor;
+    });
     currentTheme.secondaryColor = target.style.color;
     return;
 });
