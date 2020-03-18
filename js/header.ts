@@ -5,12 +5,12 @@ class NavBarHeader {
         this.startString = str;
     }
 
-    set name(name : string | null){
+    set fio(name : string | null){
         this.name = name;
-        this.updateName();
+        // this.updateName();
     }
 
-    get name (){
+    get fio (){
         return this.name;
     }
 
@@ -24,15 +24,14 @@ class NavBarHeader {
 
     get renderHeader(){
         return `
-        <p>${this.startString},<span id="userName" style="font-weight: bold">${this.name}</span>,
+        <p>${this.startString},<span id="userName" style="font-weight: bold">${this.fio}</span>,
         ${this.greeting===undefined||this.greeting===' '?'как сегодня настрой?':this.greeting}</p>
         `;
     }
     updateName(){
         let nameBlocks = document.querySelector('#userName');
-        console.log(nameBlocks);
         for (let elem of nameBlocks){
-            elem.innerText = this.name;
+            elem.innerText = this.fio;
         }
     }
 }
@@ -40,23 +39,23 @@ class NavBarHeader {
 window.onload = function () {
     let Uname;
 
-    let navheader = new NavBarHeader('Hello!');
     let name = localStorage.getItem('UserName');
 
     if (name===null){
         let newName = prompt('Как к вам обращаться?','Dude');
         localStorage.setItem('UserName',newName);
     }
+    let navheader = new NavBarHeader('Hello');
+    navheader.fio = localStorage.getItem('UserName');
 
-    navheader.name = localStorage.getItem('UserName');
-
-    navHeaderEl.innerHTML = navheader.renderHeader;  // TODO: not work and understand
+    navHeaderEl?.innerHTML = navheader.renderHeader;  
     Uname = document.querySelector('#userName');
 
-    Uname.addEventListener('click',function () {
+    Uname?.addEventListener('click',function () {
         let newName = prompt('Как к вам обращаться?',localStorage.getItem('UserName'));
         localStorage.setItem('UserName', newName);
-        navheader.name = newName;
+        navheader.fio = newName;
+        navheader.updateName; //TODO: not update rendering name! need rerendering page!
     })
 };
 
