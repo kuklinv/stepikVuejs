@@ -26,7 +26,7 @@ var NavBarHeader = /** @class */ (function () {
     });
     Object.defineProperty(NavBarHeader.prototype, "renderHeader", {
         get: function () {
-            return "\n        <p>" + this.startString + ",<span id=\"userName\" style=\"font-weight: bold\">" + this.fio + "</span>,\n        " + (this.greeting === undefined || this.greeting === ' ' ? 'как сегодня настрой?' : this.greeting) + "</p>\n        ";
+            return "\n        <p>" + this.startString + ",<span id=\"userName\" style=\"font-weight: bold\">" + this.fio + "</span>,\n        " + (this.greeting === undefined || this.greeting === ' ' ? 'how are you today?' : this.greeting) + "</p>\n        ";
         },
         enumerable: true,
         configurable: true

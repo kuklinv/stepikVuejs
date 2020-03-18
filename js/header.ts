@@ -25,7 +25,7 @@ class NavBarHeader {
     get renderHeader(){
         return `
         <p>${this.startString},<span id="userName" style="font-weight: bold">${this.fio}</span>,
-        ${this.greeting===undefined||this.greeting===' '?'как сегодня настрой?':this.greeting}</p>
+        ${this.greeting===undefined||this.greeting===' '?'how are you today?':this.greeting}</p>
         `;
     }
     updateName(){
