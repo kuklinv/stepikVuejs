@@ -7,9 +7,19 @@ function SkillsBlock(skills) {
 }
 var skills = [
     {
-        name: 'JavaScript',
+        name: 'JS',
         val: '80%',
         color: '#e74438'
+    },
+    {
+        name: 'TS',
+        val: '50%',
+        color: '#e74439'
+    },
+    {
+        name: 'Node.js',
+        val: '40%',
+        color: '#e74440'
     },
     {
         name: 'Vue.js',
@@ -17,13 +27,9 @@ var skills = [
         color: 'rgba(16,255,182,0.78)'
     },
     {
-        name: 'CSS',
+        name: 'HTML/CSS',
         val: '30%',
         color: 'rgba(6,176,255,0.64)'
     }
 ];
-// window.onload = function(){
-// document.querySelector('skills-sections')?.innerHTML = SkillsBlock(skills);
-// };
-// let skillsSection = document.querySelector('skills-sections');
 (_a = document.querySelector('.skills-sections')) === null || _a === void 0 ? void 0 : _a.innerHTML = SkillsBlock(skills);
