@@ -7,7 +7,7 @@ class NavBarHeader {
 
     set fio(name : string | null){
         this.name = name;
-        // this.updateName();
+        // this.updateName(); //TODO: need update name when new name - now its work when reload page only
     }
 
     get fio (){
@@ -48,14 +48,14 @@ window.onload = function () {
     let navheader = new NavBarHeader('Hello');
     navheader.fio = localStorage.getItem('UserName');
 
-    navHeaderEl?.innerHTML = navheader.renderHeader;  
+    navHeaderEl?.innerHTML = navheader.renderHeader;
     Uname = document.querySelector('#userName');
 
     Uname?.addEventListener('click',function () {
         let newName = prompt('Как к вам обращаться?',localStorage.getItem('UserName'));
         localStorage.setItem('UserName', newName);
         navheader.fio = newName;
-        navheader.updateName; //TODO: not update rendering name! need rerendering page!
+        navheader.updateName; //
     })
 };
 

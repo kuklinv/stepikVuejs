@@ -9,7 +9,7 @@ var NavBarHeader = /** @class */ (function () {
         },
         set: function (name) {
             this.name = name;
-            // this.updateName();
+            // this.updateName(); //TODO: need update name when new name - now its work when reload page only
         },
         enumerable: true,
         configurable: true
@@ -41,7 +41,6 @@ var NavBarHeader = /** @class */ (function () {
     return NavBarHeader;
 }());
 window.onload = function () {
-    var _a, _b;
     var Uname;
     var name = localStorage.getItem('UserName');
     if (name === null) {
@@ -50,12 +49,12 @@ window.onload = function () {
     }
     var navheader = new NavBarHeader('Hello');
     navheader.fio = localStorage.getItem('UserName');
-    (_a = navHeaderEl) === null || _a === void 0 ? void 0 : _a.innerHTML = navheader.renderHeader;
+    navHeaderEl === null || navHeaderEl === void 0 ? void 0 : navHeaderEl.innerHTML = navheader.renderHeader;
     Uname = document.querySelector('#userName');
-    (_b = Uname) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function () {
+    Uname === null || Uname === void 0 ? void 0 : Uname.addEventListener('click', function () {
         var newName = prompt('Как к вам обращаться?', localStorage.getItem('UserName'));
         localStorage.setItem('UserName', newName);
         navheader.fio = newName;
-        navheader.updateName; //TODO: not update rendering name! need rerendering page!
+        navheader.updateName; //
     });
 };

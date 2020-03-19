@@ -16,23 +16,22 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
             r[k] = a[j];
     return r;
 };
-var _a, _b, _c, _d, _e;
+var _a;
 var allContentWindow = document.querySelector(".content-wrapper"); // window
-var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!// TODO: change to select menu!!!
+var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
 var menuWraper = document.querySelector(".menu-wrapper");
 var menuSwitcher = false;
-(_a = niceMenuBtn) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function (event) {
-    var _a, _b;
+niceMenuBtn === null || niceMenuBtn === void 0 ? void 0 : niceMenuBtn.addEventListener("click", function (event) {
     var target = event.target;
     if (!target) {
         return;
     }
     menuSwitcher = !menuSwitcher;
     if (menuSwitcher) {
-        (_a = menuWraper) === null || _a === void 0 ? void 0 : _a.style.display = 'block';
+        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'block';
     }
     else {
-        (_b = menuWraper) === null || _b === void 0 ? void 0 : _b.style.display = 'none';
+        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'none';
     }
 });
 var editPopupSwitcher = false;
@@ -70,23 +69,22 @@ var currentTheme = {
     themeType: 'indigo-theme',
     secondaryColor: '#4ebdde4'
 };
-(_b = themeSelectorsWraper) === null || _b === void 0 ? void 0 : _b.addEventListener("click", function (e) {
-    var _a, _b, _c;
+themeSelectorsWraper === null || themeSelectorsWraper === void 0 ? void 0 : themeSelectorsWraper.addEventListener("click", function (e) {
     for (var _i = 0, themeSelectors_1 = themeSelectors; _i < themeSelectors_1.length; _i++) {
         var element = themeSelectors_1[_i];
         element.classList.remove("selected-theme");
     }
     var currentTarget = e.target;
-    if (((_a = currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "indigo") {
-        (_b = preview) === null || _b === void 0 ? void 0 : _b.classList.value = "preview-wrapper indigo-theme";
+    if ((currentTarget === null || currentTarget === void 0 ? void 0 : currentTarget.id) === "indigo") {
+        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper indigo-theme";
         currentTheme.themeType = 'indigo-theme';
     }
     else {
-        (_c = preview) === null || _c === void 0 ? void 0 : _c.classList.value = "preview-wrapper black-theme";
+        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper black-theme";
         currentTheme.themeType = 'black-theme';
     }
 });
-(_c = allContentWindow) === null || _c === void 0 ? void 0 : _c.addEventListener("click", function () {
+allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWindow.addEventListener("click", function () {
     gsap.to(editPopup, 1, {
         x: "-200%",
         display: "block",
@@ -106,7 +104,7 @@ var previewChildes = function () {
     return previewNodes;
 };
 // * ! important
-(_d = previewRadioGroup) === null || _d === void 0 ? void 0 : _d.addEventListener('click', function (event) {
+previewRadioGroup === null || previewRadioGroup === void 0 ? void 0 : previewRadioGroup.addEventListener('click', function (event) {
     var target = event.target.closest('.radio-item>label>span');
     if (!target) {
         return;
@@ -116,8 +114,6 @@ var previewChildes = function () {
     currentTheme.secondaryColor = target.style.color;
     return;
 });
-// TODO: next - create object for storage our theme and save this to LocalStorage
-// TODO: next - update our theme with created object
 var themeStorage = {
     themeType: 'indigo-theme',
     secondaryColor: '#4ebdde4',
@@ -146,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     themeStorage.update();
 });
-(_e = document.querySelector("#save-theme-btn")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", function () {
+(_a = document.querySelector("#save-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
     themeStorage.themeType = currentTheme.themeType;
     themeStorage.secondaryColor = currentTheme.secondaryColor;
     themeStorage.update();

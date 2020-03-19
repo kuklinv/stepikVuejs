@@ -22,8 +22,4 @@ var skills = [
         color: 'rgba(6,176,255,0.64)'
     }
 ];
-// window.onload = function(){
-// document.querySelector('skills-sections')?.innerHTML = SkillsBlock(skills);
-// };
-// let skillsSection = document.querySelector('skills-sections');
 (_a = document.querySelector('.skills-sections')) === null || _a === void 0 ? void 0 : _a.innerHTML = SkillsBlock(skills);
