@@ -1,4 +1,4 @@
-var _a, _b;
+var _a;
 function Tab(tabData, i) {
     return "<li class=\"tab-link_tab\"><span id=\"" + i + "\">" + tabData.name + "</span></li>";
 }
@@ -31,7 +31,7 @@ function TabContent(tab) {
 }
 // let tabsLink = [...document.querySelectorAll('.tab-link_tab')]; //TODO: not?
 var tabsContainer = document.querySelector('.tabs_container');
-(_b = tabsContainer) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function (event) {
+tabsContainer === null || tabsContainer === void 0 ? void 0 : tabsContainer.addEventListener('click', function (event) {
     var _a;
     var target = event.target;
     console.log(target);

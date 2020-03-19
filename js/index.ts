@@ -11,7 +11,7 @@
 */
 
 let allContentWindow = document.querySelector(".content-wrapper"); // window
-let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!// TODO: change to select menu!!!
+let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
 let menuWraper = document.querySelector(".menu-wrapper");
 let menuSwitcher = false;
 niceMenuBtn?.addEventListener("click", (event) => {
@@ -111,9 +111,6 @@ previewRadioGroup?.addEventListener('click', (event) => {
     currentTheme.secondaryColor = target.style.color;
     return;
 });
-
-// TODO: next - create object for storage our theme and save this to LocalStorage
-// TODO: next - update our theme with created object
 
 let themeStorage = {
     themeType: 'indigo-theme',

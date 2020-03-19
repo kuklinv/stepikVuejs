@@ -32,7 +32,7 @@ let tabs = [
 
 document.querySelector('.tabs_container')?.innerHTML = TabList(tabs);
 
-function TabContent(tab) {                                                                         //TODO: not awesom look
+function TabContent(tab) {                                                  //TODO: not awesome look
     return `<div class="tabs_content_container" style="display: block">
                 <a href="${tab.contentLink}" target="_blank">${tab.contentLinkText}</a>   
                 <p>${tab.contentText}</p>
@@ -47,6 +47,7 @@ tabsContainer?.addEventListener('click',function (event) {
     if(target.tagName !== 'SPAN'){
         return;
     }
+
    //document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+this.id]);  //TODO: not work with all selectors (only first) and not hide information on second clik - need sweetcher
    document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+target.id]); //TODO: not working yet //id!!
 });
