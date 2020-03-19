@@ -169,7 +169,7 @@ ul {
 }
 .tabs_container > ul {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 .tab-link_tab {
   margin-bottom: 10%;
