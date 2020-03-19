@@ -1,42 +1,26 @@
-// from main.js
-/*
-// $(function(){
-//     let includes = $('[data-include]');
-//     //document.querySelector("[data-include]").innerText;
-//     jQuery.each(includes, function(){
-//         let file = 'components/' + $(this).data('include') + '.html';
-//         $(this).load(file);
-//     });
-// });
-*/
-var __spreadArrays = (this && this.__spreadArrays) || function () {
-    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-    for (var r = Array(s), k = 0, i = 0; i < il; i++)
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-            r[k] = a[j];
-    return r;
-};
-var _a;
-var allContentWindow = document.querySelector(".content-wrapper"); // window
-var niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
-var menuWraper = document.querySelector(".menu-wrapper");
-var menuSwitcher = false;
-niceMenuBtn === null || niceMenuBtn === void 0 ? void 0 : niceMenuBtn.addEventListener("click", function (event) {
-    var target = event.target;
+var _a, _b, _c, _d, _e;
+import { themeStorage } from './theme.js';
+let allContentWindow = document.querySelector(".content-wrapper"); // window
+let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
+let menuWraper = document.querySelector(".menu-wrapper");
+let menuSwitcher = false;
+(_a = niceMenuBtn) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (event) => {
+    var _a, _b;
+    let target = event.target;
     if (!target) {
         return;
     }
     menuSwitcher = !menuSwitcher;
     if (menuSwitcher) {
-        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'block';
+        (_a = menuWraper) === null || _a === void 0 ? void 0 : _a.style.display = 'block';
     }
     else {
-        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'none';
+        (_b = menuWraper) === null || _b === void 0 ? void 0 : _b.style.display = 'none';
     }
 });
-var editPopupSwitcher = false;
-var editPopup = document.querySelector(".edit-popup");
-var chThemeBtn = document.querySelector("#edit"); //* change theme button
+let editPopupSwitcher = false;
+let editPopup = document.querySelector(".edit-popup");
+let chThemeBtn = document.querySelector("#edit"); //* change theme button
 chThemeBtn === null || chThemeBtn === void 0
     ? void 0
     : chThemeBtn.addEventListener("click", function (event) {
@@ -62,29 +46,29 @@ chThemeBtn === null || chThemeBtn === void 0
             });
         }
     });
-var preview = document.querySelector(".preview-wrapper");
-var themeSelectors = __spreadArrays(document.querySelectorAll(".theme-select"));
-var themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
-var currentTheme = {
+let preview = document.querySelector(".preview-wrapper");
+let themeSelectors = [...document.querySelectorAll(".theme-select")];
+let themeSelectorsWraper = document.querySelector(".theme-selects_wrapper");
+let currentTheme = {
     themeType: 'indigo-theme',
-    secondaryColor: '#4ebdde4'
+    secondaryColor: '#4ebdde4',
 };
-themeSelectorsWraper === null || themeSelectorsWraper === void 0 ? void 0 : themeSelectorsWraper.addEventListener("click", function (e) {
-    for (var _i = 0, themeSelectors_1 = themeSelectors; _i < themeSelectors_1.length; _i++) {
-        var element = themeSelectors_1[_i];
+(_b = themeSelectorsWraper) === null || _b === void 0 ? void 0 : _b.addEventListener("click", e => {
+    var _a, _b, _c;
+    for (let element of themeSelectors) {
         element.classList.remove("selected-theme");
     }
-    var currentTarget = e.target;
-    if ((currentTarget === null || currentTarget === void 0 ? void 0 : currentTarget.id) === "indigo") {
-        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper indigo-theme";
+    let currentTarget = e.target;
+    if (((_a = currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "indigo") {
+        (_b = preview) === null || _b === void 0 ? void 0 : _b.classList.value = "preview-wrapper indigo-theme";
         currentTheme.themeType = 'indigo-theme';
     }
     else {
-        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper black-theme";
+        (_c = preview) === null || _c === void 0 ? void 0 : _c.classList.value = "preview-wrapper black-theme";
         currentTheme.themeType = 'black-theme';
     }
 });
-allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWindow.addEventListener("click", function () {
+(_c = allContentWindow) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
     gsap.to(editPopup, 1, {
         x: "-200%",
         display: "block",
@@ -93,56 +77,56 @@ allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWi
         ease: Power3.easeOut
     });
 });
-var switchPreviewColorRadioBtn = __spreadArrays(document.querySelectorAll(".radio-item>label>span"));
-var previewRadioGroup = document.querySelector('#preview-radio-group');
-var previewChildes = function () {
-    var previewNodes = [];
-    var progressLine = document.querySelector('#progress-line-preview');
-    var previewBtn = document.querySelector('#preview-btn');
+let switchPreviewColorRadioBtn = [
+    ...document.querySelectorAll(".radio-item>label>span")
+];
+let previewRadioGroup = document.querySelector('#preview-radio-group');
+let previewChildes = function () {
+    let previewNodes = [];
+    let progressLine = document.querySelector('#progress-line-preview');
+    let previewBtn = document.querySelector('#preview-btn');
     previewNodes.push(progressLine);
     previewNodes.push(previewBtn);
     return previewNodes;
 };
 // * ! important
-previewRadioGroup === null || previewRadioGroup === void 0 ? void 0 : previewRadioGroup.addEventListener('click', function (event) {
-    var target = event.target.closest('.radio-item>label>span');
+(_d = previewRadioGroup) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
+    let target = event.target.closest('.radio-item>label>span');
     if (!target) {
         return;
     }
-    var tColor = target.style.color;
-    previewChildes().forEach(function (e) { return e.style.backgroundColor = tColor; });
+    let tColor = target.style.color;
+    previewChildes().forEach((e) => e.style.backgroundColor = tColor);
     currentTheme.secondaryColor = target.style.color;
     return;
 });
-var themeStorage = {
-    themeType: 'indigo-theme',
-    secondaryColor: '#4ebdde4',
-    update: function () {
-        var _this = this;
-        var _a, _b, _c, _d;
-        (_a = document.querySelector("#edit")) === null || _a === void 0 ? void 0 : _a.style.backgroundColor = this.secondaryColor;
-        (_b = document.querySelector(".content-wrapper")) === null || _b === void 0 ? void 0 : _b.classList.value = "content-wrapper " + this.themeType;
-        (_c = document.querySelector(".nav")) === null || _c === void 0 ? void 0 : _c.classList.value = "nav-wrapper navbar-fixed indigo-theme " + this.themeType;
-        var menuItem = __spreadArrays((_d = document.querySelector('.menu-btn')) === null || _d === void 0 ? void 0 : _d.childNodes);
-        menuItem.forEach(function (el) {
-            if (el.nodeType !== 3) {
-                el.style.backgroundColor = _this.secondaryColor;
-            }
-        });
-        localStorage.setItem('themeType', this.themeType);
-        localStorage.setItem('secondaryColor', this.secondaryColor);
-    }
-};
+// let themeStorage = {
+//     themeType: 'indigo-theme',
+//     secondaryColor: '#4ebdde4',
+//     update: function () {
+//         document.querySelector("#edit")?.style.backgroundColor = this.secondaryColor;
+//         document.querySelector(".content-wrapper")?.classList.value = `content-wrapper ${this.themeType}`;
+//         document.querySelector(".nav")?.classList.value = `nav-wrapper navbar-fixed indigo-theme ${this.themeType}`;
+//         let menuItem = [...document.querySelector('.menu-btn')?.childNodes];
+//         menuItem.forEach((el) => {
+//             if (el.nodeType !== 3) {
+//                 el.style.backgroundColor = this.secondaryColor;
+//             }
+//         });
+//         localStorage.setItem('themeType', this.themeType);
+//         localStorage.setItem('secondaryColor', this.secondaryColor);
+//     }
+// };
 document.addEventListener('DOMContentLoaded', function () {
-    var sColor = localStorage.getItem('secondaryColor'); // its result !!!!!! main result
-    var themeType = localStorage.getItem('themeType');
+    let sColor = localStorage.getItem('secondaryColor'); // its result !!!!!! main result
+    let themeType = localStorage.getItem('themeType');
     if (sColor !== null && themeType !== null) {
         themeStorage.secondaryColor = sColor;
         themeStorage.themeType = themeType;
     }
     themeStorage.update();
 });
-(_a = document.querySelector("#save-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+(_e = document.querySelector("#save-theme-btn")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
     themeStorage.themeType = currentTheme.themeType;
     themeStorage.secondaryColor = currentTheme.secondaryColor;
     themeStorage.update();
