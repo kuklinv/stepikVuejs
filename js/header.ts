@@ -7,7 +7,7 @@ class NavBarHeader {
 
     set fio(name : string | null){
         this.name = name;
-        // this.updateName(); //TODO: need update name when new name - now its work when reload page only
+        this.updateName(); //TODO: need update name when new name - now its work when reload page only
     }
 
     get fio (){
@@ -30,9 +30,9 @@ class NavBarHeader {
     }
     updateName(){
         let nameBlocks = document.querySelector('#userName');
-        for (let elem of nameBlocks){
-            elem.innerText = this.fio;
-        }
+        // for (let elem of nameBlocks){
+            nameBlocks?.innerText = this.fio;
+        // }
     }
 }
 
@@ -56,6 +56,7 @@ window.onload = function () {
         localStorage.setItem('UserName', newName);
         navheader.fio = newName;
         navheader.updateName; //
+        // navHeaderEl?.innerHTML = navheader.renderHeader;
     })
 };
 
