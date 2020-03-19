@@ -1,6 +1,6 @@
 var _a;
 function Tab(tabData, i) {
-    return "<li class=\"tab-link_tab\" id=\"" + i + "\"><span>" + tabData.name + "</span></li>";
+    return "<li class=\"tab-link_tab\"><span id=\"" + i + "\">" + tabData.name + "</span></li>";
 }
 function TabList(tabs) {
     return "<ul>\n                " + tabs.map(function (el, i) { return Tab(el, i); }).join('') + "\n            </ul>";
@@ -34,9 +34,10 @@ var tabsContainer = document.querySelector('.tabs_container');
 tabsContainer === null || tabsContainer === void 0 ? void 0 : tabsContainer.addEventListener('click', function (event) {
     var _a;
     var target = event.target;
+    console.log(target);
     if (target.tagName !== 'SPAN') {
         return;
     }
-    //document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+this.id]);  //TODO: not work with all selectors (only first) and not hide information on second click - need switcher
-    (_a = document.querySelector('.tab-content_wrapper')) === null || _a === void 0 ? void 0 : _a.innerHTML = TabContent(tabs.filter(function (el) { return el['name'] == target.innerHTML; })); //TODO: not working yet
+    //document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+this.id]);  //TODO: not work with all selectors (only first) and not hide information on second clik - need sweetcher
+    (_a = document.querySelector('.tab-content_wrapper')) === null || _a === void 0 ? void 0 : _a.innerHTML = TabContent(tabs[+target.id]); //TODO: not working yet //id!!
 });

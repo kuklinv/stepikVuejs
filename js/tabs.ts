@@ -1,7 +1,7 @@
-function Tab(tabData,i) {
-    return `<li class="tab-link_tab" id="${i}"><span>${tabData.name}</span></li>`;
+function Tab(tabData,i) {                                                                        //TODO: css for span
+    return `<li class="tab-link_tab"><span id="${i}">${tabData.name}</span></li>`;  
 }
-function TabList(tabs){
+function TabList(tabs){                                                                           //TODO: css for span
     return `<ul>
                 ${tabs.map((el,i)=>Tab(el,i)).join('')}
             </ul>`
@@ -43,9 +43,11 @@ function TabContent(tab) {                                                  //TO
 let tabsContainer = document.querySelector('.tabs_container');
 tabsContainer?.addEventListener('click',function (event) {
     let target = event.target;
+    console.log(target);
     if(target.tagName !== 'SPAN'){
         return;
     }
-   //document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+this.id]);  //TODO: not work with all selectors (only first) and not hide information on second click - need switcher
-   document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs.filter(el => el['name'] == target.innerHTML)); //TODO: not working yet
+
+   //document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+this.id]);  //TODO: not work with all selectors (only first) and not hide information on second clik - need sweetcher
+   document.querySelector('.tab-content_wrapper')?.innerHTML = TabContent(tabs[+target.id]); //TODO: not working yet //id!!
 });

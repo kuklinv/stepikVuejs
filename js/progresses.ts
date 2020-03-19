@@ -16,9 +16,19 @@ function SkillsBlock(skills){
 
 let skills = [
     {
-        name:'JavaScript',
+        name:'JS',
         val:'80%',
         color:'#e74438'
+    },
+    {
+        name: 'TS',
+        val: '50%',
+        color: '#e74439'
+    },
+    {
+        name: 'Node.js',
+        val: '40%',
+        color: '#e74440'
     },
     {
         name:'Vue.js',
@@ -26,7 +36,7 @@ let skills = [
         color:'rgba(16,255,182,0.78)'
     },
     {
-        name:'CSS',
+        name:'HTML/CSS',
         val:'30%',
         color:'rgba(6,176,255,0.64)'
     }
