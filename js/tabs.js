@@ -1,11 +1,13 @@
-var _a;
+var _a, _b;
 function Tab(tabData, i) {
-    return "<li class=\"tab-link_tab\"><span id=\"" + i + "\">" + tabData.name + "</span></li>";
+    return `<li class="tab-link_tab"><span id="${i}">${tabData.name}</span></li>`;
 }
 function TabList(tabs) {
-    return "<ul>\n                " + tabs.map(function (el, i) { return Tab(el, i); }).join('') + "\n            </ul>";
+    return `<ul>
+                ${tabs.map((el, i) => Tab(el, i)).join('')}
+            </ul>`;
 }
-var tabs = [
+let tabs = [
     {
         name: 'github',
         contentLink: 'https://github.com/kuklinv',
@@ -27,14 +29,16 @@ var tabs = [
 ];
 (_a = document.querySelector('.tabs_container')) === null || _a === void 0 ? void 0 : _a.innerHTML = TabList(tabs);
 function TabContent(tab) {
-    return "<div class=\"tabs_content_container\" style=\"display: block\">\n                <a href=\"" + tab.contentLink + "\" target=\"_blank\">" + tab.contentLinkText + "</a>   \n                <p>" + tab.contentText + "</p>\n</div>";
+    return `<div class="tabs_content_container" style="display: block">
+                <a href="${tab.contentLink}" target="_blank">${tab.contentLinkText}</a>   
+                <p>${tab.contentText}</p>
+</div>`;
 }
 // let tabsLink = [...document.querySelectorAll('.tab-link_tab')]; //TODO: not?
-var tabsContainer = document.querySelector('.tabs_container');
-tabsContainer === null || tabsContainer === void 0 ? void 0 : tabsContainer.addEventListener('click', function (event) {
+let tabsContainer = document.querySelector('.tabs_container');
+(_b = tabsContainer) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function (event) {
     var _a;
-    var target = event.target;
-    console.log(target);
+    let target = event.target;
     if (target.tagName !== 'SPAN') {
         return;
     }

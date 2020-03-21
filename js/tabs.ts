@@ -43,7 +43,6 @@ function TabContent(tab) {                                                  //TO
 let tabsContainer = document.querySelector('.tabs_container');
 tabsContainer?.addEventListener('click',function (event) {
     let target = event.target;
-    console.log(target);
     if(target.tagName !== 'SPAN'){
         return;
     }

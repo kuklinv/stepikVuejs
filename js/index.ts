@@ -1,14 +1,4 @@
-// from main.js
-/*
-// $(function(){
-//     let includes = $('[data-include]');
-//     //document.querySelector("[data-include]").innerText;
-//     jQuery.each(includes, function(){
-//         let file = 'components/' + $(this).data('include') + '.html';
-//         $(this).load(file);
-//     });
-// });
-*/
+import {themeStorage} from './theme.js';
 
 let allContentWindow = document.querySelector(".content-wrapper"); // window
 let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
@@ -112,23 +102,23 @@ previewRadioGroup?.addEventListener('click', (event) => {
     return;
 });
 
-let themeStorage = {
-    themeType: 'indigo-theme',
-    secondaryColor: '#4ebdde4',
-    update: function () {
-        document.querySelector("#edit")?.style.backgroundColor = this.secondaryColor;
-        document.querySelector(".content-wrapper")?.classList.value = `content-wrapper ${this.themeType}`;
-        document.querySelector(".nav")?.classList.value = `nav-wrapper navbar-fixed indigo-theme ${this.themeType}`;
-        let menuItem = [...document.querySelector('.menu-btn')?.childNodes];
-        menuItem.forEach((el) => {
-            if (el.nodeType !== 3) {
-                el.style.backgroundColor = this.secondaryColor;
-            }
-        });
-        localStorage.setItem('themeType', this.themeType);
-        localStorage.setItem('secondaryColor', this.secondaryColor);
-    }
-};
+// let themeStorage = {
+//     themeType: 'indigo-theme',
+//     secondaryColor: '#4ebdde4',
+//     update: function () {
+//         document.querySelector("#edit")?.style.backgroundColor = this.secondaryColor;
+//         document.querySelector(".content-wrapper")?.classList.value = `content-wrapper ${this.themeType}`;
+//         document.querySelector(".nav")?.classList.value = `nav-wrapper navbar-fixed indigo-theme ${this.themeType}`;
+//         let menuItem = [...document.querySelector('.menu-btn')?.childNodes];
+//         menuItem.forEach((el) => {
+//             if (el.nodeType !== 3) {
+//                 el.style.backgroundColor = this.secondaryColor;
+//             }
+//         });
+//         localStorage.setItem('themeType', this.themeType);
+//         localStorage.setItem('secondaryColor', this.secondaryColor);
+//     }
+// };
 
 document.addEventListener('DOMContentLoaded', function () { // for save theme betwean reloads page - -use localStorage!!!!!!!!!!
     let sColor = localStorage.getItem('secondaryColor');   // its result !!!!!! main result
