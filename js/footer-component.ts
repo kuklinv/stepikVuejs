@@ -1,5 +1,5 @@
 export class FooterComponent {
-    constructor({element}) {
+    constructor(element) {
         this.element = element;
         this.render();
     }

@@ -1,7 +1,9 @@
 import {themeStorage} from './theme.js';
-import {FooterComponent} from './footer-component';
+import {FooterComponent} from './footer-component.js';
 
-new FooterComponent(document.querySelector('.footer-component'));
+let footerElement = document.querySelector('#footer-component');
+
+new FooterComponent(footerElement);
 
 let allContentWindow = document.querySelector(".content-wrapper"); // window
 let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//

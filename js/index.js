@@ -1,7 +1,8 @@
 var _a;
 import { themeStorage } from './theme.js';
-import { FooterComponent } from './footer-component';
-new FooterComponent(document.querySelector('.footer-component'));
+import { FooterComponent } from './footer-component.js';
+let footerElement = document.querySelector('#footer-component');
+new FooterComponent(footerElement);
 let allContentWindow = document.querySelector(".content-wrapper"); // window
 let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
 let menuWraper = document.querySelector(".menu-wrapper");
