@@ -1,8 +1,10 @@
 var _a;
 import { themeStorage } from './theme.js';
 import { FooterComponent } from './footer-component.js';
+export { Tooltip } from './tooltip.js';
 let footerElement = document.querySelector('#footer-component');
 new FooterComponent(footerElement);
+new Tooltip(document.querySelector('#tooltip_wrapper'));
 let allContentWindow = document.querySelector(".content-wrapper"); // window
 let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
 let menuWraper = document.querySelector(".menu-wrapper");
