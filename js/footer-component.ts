@@ -1,4 +1,11 @@
-<footer>
+export class FooterComponent {
+    constructor(element) {
+        this.element = element;
+        this.render();
+    }
+    render(){
+        this.element.innerHTML = `
+        <footer>
     <div class="footer-wrapper">
 
         <div style="margin: 0 auto;padding: 10px;width: fit-content;position: relative">
@@ -13,3 +20,6 @@
         console.log("its footer")
     </script>
 </footer>
+        `;
+    }
+}
