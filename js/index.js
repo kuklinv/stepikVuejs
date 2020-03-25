@@ -118,3 +118,22 @@ document.addEventListener('DOMContentLoaded', function () {
     themeStorage.secondaryColor = currentTheme.secondaryColor;
     themeStorage.update();
 });
+let toolTipElement = document.querySelector('.tooltip_wrapper'); // for tooltip - popup
+let tooltipTarget = document.querySelector('#text');
+let isTooltipActive = false;
+tooltipTarget.addEventListener('mouseover', () => {
+    toolTipElement.style.display = 'block';
+});
+tooltipTarget.addEventListener('mouseleave', () => {
+    setTimeout(function () {
+        if (!isTooltipActive) {
+            toolTipElement.style.display = 'none';
+        }
+    }, 1000);
+});
+toolTipElement.addEventListener('mouseover', () => {
+    isTooltipActive = true;
+});
+toolTipElement.addEventListener('mouseleave', () => {
+    toolTipElement.style.display = 'none';
+});

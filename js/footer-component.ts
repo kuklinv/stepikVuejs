@@ -10,9 +10,9 @@ export class FooterComponent {
     <div class="footer-wrapper">
 
         <div style="margin: 0 auto;padding: 10px;width: fit-content;position: relative">
-            <span id="text">this is star wars api ui</span>
+            <span id="text">THIS IS PROJECT API UI FOOTER COMPONENT</span>
             <div class="tooltip_wrapper" style="display: none">
-                     <div class="tooltip-container">Здесь текст тултипа</div>
+                     <div class="tooltip-container">this is tooltip content</div>
             </div>
         </div>
     </div>
@@ -26,3 +26,4 @@ export class FooterComponent {
 }
 
 // let toolTipElement = document.querySelector('.tooltip_wrapper');
+// console.log(toolTipElement);
