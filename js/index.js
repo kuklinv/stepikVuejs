@@ -1,25 +1,25 @@
-var _a;
+var _a, _b, _c, _d, _e;
 import { themeStorage } from './theme.js';
 import { FooterComponent } from './footer-component.js';
 export { Tooltip } from './tooltip.js';
 let footerElement = document.querySelector('#footer-component');
 new FooterComponent(footerElement);
-new Tooltip(document.querySelector('#tooltip_wrapper'));
 let allContentWindow = document.querySelector(".content-wrapper"); // window
 let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
 let menuWraper = document.querySelector(".menu-wrapper");
 let menuSwitcher = false;
-niceMenuBtn === null || niceMenuBtn === void 0 ? void 0 : niceMenuBtn.addEventListener("click", (event) => {
+(_a = niceMenuBtn) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (event) => {
+    var _a, _b;
     let target = event.target;
     if (!target) {
         return;
     }
     menuSwitcher = !menuSwitcher;
     if (menuSwitcher) {
-        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'block';
+        (_a = menuWraper) === null || _a === void 0 ? void 0 : _a.style.display = 'block';
     }
     else {
-        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'none';
+        (_b = menuWraper) === null || _b === void 0 ? void 0 : _b.style.display = 'none';
     }
 });
 let editPopupSwitcher = false;
@@ -57,21 +57,22 @@ let currentTheme = {
     themeType: 'indigo-theme',
     secondaryColor: '#4ebdde4',
 };
-themeSelectorsWraper === null || themeSelectorsWraper === void 0 ? void 0 : themeSelectorsWraper.addEventListener("click", e => {
+(_b = themeSelectorsWraper) === null || _b === void 0 ? void 0 : _b.addEventListener("click", e => {
+    var _a, _b, _c;
     for (let element of themeSelectors) {
         element.classList.remove("selected-theme");
     }
     let currentTarget = e.target;
-    if ((currentTarget === null || currentTarget === void 0 ? void 0 : currentTarget.id) === "indigo") {
-        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper indigo-theme";
+    if (((_a = currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "indigo") {
+        (_b = preview) === null || _b === void 0 ? void 0 : _b.classList.value = "preview-wrapper indigo-theme";
         currentTheme.themeType = 'indigo-theme';
     }
     else {
-        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper black-theme";
+        (_c = preview) === null || _c === void 0 ? void 0 : _c.classList.value = "preview-wrapper black-theme";
         currentTheme.themeType = 'black-theme';
     }
 });
-allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWindow.addEventListener("click", () => {
+(_c = allContentWindow) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
     gsap.to(editPopup, 1, {
         x: "-200%",
         display: "block",
@@ -93,7 +94,7 @@ let previewChildes = function () {
     return previewNodes;
 };
 // * ! important
-previewRadioGroup === null || previewRadioGroup === void 0 ? void 0 : previewRadioGroup.addEventListener('click', (event) => {
+(_d = previewRadioGroup) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
     let target = event.target.closest('.radio-item>label>span');
     if (!target) {
         return;
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     themeStorage.update();
 });
-(_a = document.querySelector("#save-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
+(_e = document.querySelector("#save-theme-btn")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
     themeStorage.themeType = currentTheme.themeType;
     themeStorage.secondaryColor = currentTheme.secondaryColor;
     themeStorage.update();

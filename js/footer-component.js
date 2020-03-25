@@ -11,6 +11,7 @@ export class FooterComponent {
         <div style="margin: 0 auto;padding: 10px;width: fit-content;position: relative">
             <span id="text">this is star wars api ui</span>
             <div class="tooltip_wrapper" style="display: none">
+                     <div class="tooltip-container">Здесь текст тултипа</div>
             </div>
         </div>
     </div>
@@ -22,3 +23,4 @@ export class FooterComponent {
         `;
     }
 }
+// let toolTipElement = document.querySelector('.tooltip_wrapper');
