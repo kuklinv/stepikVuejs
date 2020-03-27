@@ -1,4 +1,6 @@
 {
+  "compileOnSave": true,
+  "outDir": "./js",
   "compilerOptions": {
     /* Basic Options */
     // "incremental": true,                   /* Enable incremental compilation */
@@ -62,5 +64,6 @@
 
     /* Advanced Options */
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "exclude": ["node_modules"]
 }

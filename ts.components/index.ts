@@ -1,5 +1,5 @@
 import {themeStorage} from './theme.js';
-import {FooterComponent} from './footer-component.js';
+import {FooterComponent} from '../js/footer-component.js';
 
 export {Tooltip} from './tooltip.js';
 
