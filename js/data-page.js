@@ -63,6 +63,26 @@ function drawPlanetsOnHTML(startIndex = 0, endIndex = 5) {
     let drawPlanets = pageChunckPlanets.map(item => renderPlanet(item)); // draw on html 5-chunk planets
     let planetContainer = document.querySelector('.personages_container');
     planetContainer.innerHTML = drawPlanets.join('');
+    let itemPopupSwitcher = false;
+    // document.querySelector('.personage-item_container')
+    planetContainer.addEventListener('click', (ev) => {
+        let target = ev.target.closest('.personage-item_container');
+        if (target.tagName !== 'DIV')
+            return;
+        itemPopupSwitcher = !itemPopupSwitcher;
+        if (itemPopupSwitcher) {
+            gsap.to(target, 0.6, {
+                y: '10%',
+                ease: 'Back.easeOut'
+            });
+        }
+        else {
+            gsap.to(target, 0.6, {
+                y: '50%',
+                ease: 'Back.easeOut'
+            });
+        }
+    });
 }
 window.onload = async function () {
     let res = await fetch('https://swapi.co/api/planets/').then(res => res.json());
