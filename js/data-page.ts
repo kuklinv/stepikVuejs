@@ -56,6 +56,19 @@ toolTipElement.addEventListener('mouseleave', () => {
 
 // fetch('https://swapi.co/api/planets/').then(res => res.json(res)).then(data => console.log(data));
 
+
+window.onload = async function () {
+    let res = await fetch('https://swapi.co/api/planets/').then(res => res.json());
+    planetArr = res.results.map((el, index) => {
+        el.index = index;
+        return el;
+    });
+    nextPlanetPage = res.next;              // next page from api (10 items on one page)
+    prevPlanetPage = res.previous;
+
+    drawPlanetsOnHTML();
+};
+
 let planetArr = [];            // all planets on api page (10)
 let pageChunckPlanets = [];    // 5 planets on our page
 let nextPlanetPage = '';       // next api page
@@ -81,7 +94,7 @@ function drawPlanetsOnHTML(startIndex = 0, endIndex = 5) {  // because only 5 pl
     let itemPopupSwitcher = false;
     planetContainer.addEventListener('click', (ev) => {
         let target = ev.target.closest('.personage-item_container');
-        if(target.tagName !== 'DIV') return;
+        if (target.tagName !== 'DIV') return;
         itemPopupSwitcher = !itemPopupSwitcher;
         if (itemPopupSwitcher) {
             gsap.to(target, 0.6, {
@@ -97,15 +110,35 @@ function drawPlanetsOnHTML(startIndex = 0, endIndex = 5) {  // because only 5 pl
     });
 }
 
-window.onload = async function () {
-    let res = await fetch('https://swapi.co/api/planets/').then(res => res.json());
-    planetArr = res.results.map((el, index) => {
+document.querySelector('#arrows-button').addEventListener('click', (ev) => {
+    let target = ev.target.closest('.arrow');
+    if (target.tagName != 'DIV') return;
+    let lastInCurrentChunk = pageChunckPlanets[pageChunckPlanets.length - 1].i;
+    let firstInCurrentChunk = pageChunckPlanets[0].i;
+    if (target.id == 'next') {
+        if (lastInCurrentChunk < planetArr.length - 1 && nextPlanetPage !== null) {
+            drawPlanetsOnHTML(lastInCurrentChunk + 1, lastInCurrentChunk + 6);
+        } else if (nextPlanetPage !== null) {
+            loadPlanetPage(nextPlanetPage);
+        }
+    } else if (target.id == 'prev') {                        //TODO: not working
+        if (firstInCurrentChunk > 0 && prevPlanetPage !== null) {
+            drawPlanetsOnHTML(firstInCurrentChunk - 5, firstInCurrentChunk);
+        } else if (prevPlanetPage !== null)
+            loadPlanetPage(prevPlanetPage);
+    }
+});
+
+const loadPlanetPage = async function loadPlanetPageFromSWAPI(url) {
+    let {next, previous, results} = await fetch(url).then(res => res.json());
+
+    nextPlanetPage = next;
+    prevPlanetPage = previous;
+
+    planetArr = results.map((el, index) => {
         el.index = index;
         return el;
     });
-    nextPlanetPage = res.next;              // next page from api (10 items on one page)
-    prevPlanetPage = res.previous;
-
     drawPlanetsOnHTML();
 };
 
