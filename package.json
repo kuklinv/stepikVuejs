@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/kuklinv/stepikVuejs/issues"
   },
-  "homepage": "https://github.com/kuklinv/stepikVuejs#readme"
+  "homepage": "https://github.com/kuklinv/stepikVuejs#readme",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {}
 }

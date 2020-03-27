@@ -1,5 +1,6 @@
 import {themeStorage} from './theme.js';
 import {FooterComponent} from './footer-component.js';
+
 export {Tooltip} from './tooltip.js';
 
 let footerElement = document.querySelector('#footer-component');
@@ -125,26 +126,28 @@ document.querySelector("#save-theme-btn")?.addEventListener("click", () => {
     themeStorage.update();
 });
 
+// tooltip TODO: will make as component
+
 let toolTipElement = document.querySelector('.tooltip_wrapper'); // for tooltip - popup
 let tooltipTarget = document.querySelector('#text');
 let isTooltipActive = false;
 
-        tooltipTarget.addEventListener('mouseover',()=>{
-            toolTipElement.style.display = 'block';
-        });
+tooltipTarget.addEventListener('mouseover', () => {
+    toolTipElement.style.display = 'block';
+});
 
-        tooltipTarget.addEventListener('mouseleave',()=>{
-            setTimeout(function () {
-                if (!isTooltipActive){
-                    toolTipElement.style.display = 'none';
-                }
-            },1000)
-        });
-
-        toolTipElement.addEventListener('mouseover',()=>{
-           isTooltipActive = true;
-        });
-
-        toolTipElement.addEventListener('mouseleave',()=>{
+tooltipTarget.addEventListener('mouseleave', () => {
+    setTimeout(function () {
+        if (!isTooltipActive) {
             toolTipElement.style.display = 'none';
-        });
+        }
+    }, 1000)
+});
+
+toolTipElement.addEventListener('mouseover', () => {
+    isTooltipActive = true;
+});
+
+toolTipElement.addEventListener('mouseleave', () => {
+    toolTipElement.style.display = 'none';
+});

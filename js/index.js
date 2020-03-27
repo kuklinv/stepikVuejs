@@ -1,4 +1,4 @@
-var _a, _b, _c, _d, _e;
+var _a;
 import { themeStorage } from './theme.js';
 import { FooterComponent } from './footer-component.js';
 export { Tooltip } from './tooltip.js';
@@ -8,18 +8,17 @@ let allContentWindow = document.querySelector(".content-wrapper"); // window
 let niceMenuBtn = document.querySelector(".menu-btn"); //* slideToggle menu !!//
 let menuWraper = document.querySelector(".menu-wrapper");
 let menuSwitcher = false;
-(_a = niceMenuBtn) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (event) => {
-    var _a, _b;
+niceMenuBtn === null || niceMenuBtn === void 0 ? void 0 : niceMenuBtn.addEventListener("click", (event) => {
     let target = event.target;
     if (!target) {
         return;
     }
     menuSwitcher = !menuSwitcher;
     if (menuSwitcher) {
-        (_a = menuWraper) === null || _a === void 0 ? void 0 : _a.style.display = 'block';
+        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'block';
     }
     else {
-        (_b = menuWraper) === null || _b === void 0 ? void 0 : _b.style.display = 'none';
+        menuWraper === null || menuWraper === void 0 ? void 0 : menuWraper.style.display = 'none';
     }
 });
 let editPopupSwitcher = false;
@@ -57,22 +56,21 @@ let currentTheme = {
     themeType: 'indigo-theme',
     secondaryColor: '#4ebdde4',
 };
-(_b = themeSelectorsWraper) === null || _b === void 0 ? void 0 : _b.addEventListener("click", e => {
-    var _a, _b, _c;
+themeSelectorsWraper === null || themeSelectorsWraper === void 0 ? void 0 : themeSelectorsWraper.addEventListener("click", e => {
     for (let element of themeSelectors) {
         element.classList.remove("selected-theme");
     }
     let currentTarget = e.target;
-    if (((_a = currentTarget) === null || _a === void 0 ? void 0 : _a.id) === "indigo") {
-        (_b = preview) === null || _b === void 0 ? void 0 : _b.classList.value = "preview-wrapper indigo-theme";
+    if ((currentTarget === null || currentTarget === void 0 ? void 0 : currentTarget.id) === "indigo") {
+        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper indigo-theme";
         currentTheme.themeType = 'indigo-theme';
     }
     else {
-        (_c = preview) === null || _c === void 0 ? void 0 : _c.classList.value = "preview-wrapper black-theme";
+        preview === null || preview === void 0 ? void 0 : preview.classList.value = "preview-wrapper black-theme";
         currentTheme.themeType = 'black-theme';
     }
 });
-(_c = allContentWindow) === null || _c === void 0 ? void 0 : _c.addEventListener("click", () => {
+allContentWindow === null || allContentWindow === void 0 ? void 0 : allContentWindow.addEventListener("click", () => {
     gsap.to(editPopup, 1, {
         x: "-200%",
         display: "block",
@@ -94,7 +92,7 @@ let previewChildes = function () {
     return previewNodes;
 };
 // * ! important
-(_d = previewRadioGroup) === null || _d === void 0 ? void 0 : _d.addEventListener('click', (event) => {
+previewRadioGroup === null || previewRadioGroup === void 0 ? void 0 : previewRadioGroup.addEventListener('click', (event) => {
     let target = event.target.closest('.radio-item>label>span');
     if (!target) {
         return;
@@ -113,11 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     themeStorage.update();
 });
-(_e = document.querySelector("#save-theme-btn")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", () => {
+(_a = document.querySelector("#save-theme-btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => {
     themeStorage.themeType = currentTheme.themeType;
     themeStorage.secondaryColor = currentTheme.secondaryColor;
     themeStorage.update();
 });
+// tooltip TODO: will make as component
 let toolTipElement = document.querySelector('.tooltip_wrapper'); // for tooltip - popup
 let tooltipTarget = document.querySelector('#text');
 let isTooltipActive = false;
