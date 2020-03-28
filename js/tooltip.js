@@ -3,9 +3,11 @@ export class Tooltip {
         this.element = element;
         this.render();
     }
-    render(element) {
+    render() {
         this.element.innerHTML = `
          <div class="tooltip-container">Здесь текст тултипа</div>
         `;
     }
 }
+console.log('new');
+console.log('new1');

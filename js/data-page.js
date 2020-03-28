@@ -1,3 +1,12 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 import { themeStorage } from './theme.js';
 import { FooterComponent } from './footer-component.js';
 new FooterComponent(document.querySelector('#footer-component'));
@@ -44,15 +53,17 @@ toolTipElement.addEventListener('mouseleave', () => {
 //     ]
 // };
 // fetch('https://swapi.co/api/planets/').then(res => res.json(res)).then(data => console.log(data));
-window.onload = async function () {
-    let res = await fetch('https://swapi.co/api/planets/').then(res => res.json());
-    planetArr = res.results.map((el, index) => {
-        el.index = index;
-        return el;
+window.onload = function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        let res = yield fetch('https://swapi.co/api/planets/').then(res => res.json());
+        planetArr = res.results.map((el, index) => {
+            el.index = index;
+            return el;
+        });
+        nextPlanetPage = res.next; // next page from api (10 items on one page)
+        prevPlanetPage = res.previous;
+        drawPlanetsOnHTML();
     });
-    nextPlanetPage = res.next; // next page from api (10 items on one page)
-    prevPlanetPage = res.previous;
-    drawPlanetsOnHTML();
 };
 let planetArr = []; // all planets on api page (10)
 let pageChunckPlanets = []; // 5 planets on our page
@@ -115,13 +126,15 @@ document.querySelector('#arrows-button').addEventListener('click', (ev) => {
             loadPlanetPage(prevPlanetPage);
     }
 });
-const loadPlanetPage = async function loadPlanetPageFromSWAPI(url) {
-    let { next, previous, results } = await fetch(url).then(res => res.json());
-    nextPlanetPage = next;
-    prevPlanetPage = previous;
-    planetArr = results.map((el, index) => {
-        el.index = index;
-        return el;
+const loadPlanetPage = function loadPlanetPageFromSWAPI(url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        let { next, previous, results } = yield fetch(url).then(res => res.json());
+        nextPlanetPage = next;
+        prevPlanetPage = previous;
+        planetArr = results.map((el, index) => {
+            el.index = index;
+            return el;
+        });
+        drawPlanetsOnHTML();
     });
-    drawPlanetsOnHTML();
 };
