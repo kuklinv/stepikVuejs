@@ -6,7 +6,7 @@ class NavBarHeader {
     }
     set fio(name) {
         this.name = name;
-        this.updateName(); //TODO: need update name when new name - now its work when reload page only
+        this.updateName(); //
     }
     get fio() {
         return this.name;

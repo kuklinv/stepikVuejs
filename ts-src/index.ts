@@ -1,7 +1,7 @@
-import {themeStorage} from './theme.js';
-import {FooterComponent} from '../js/footer-component.js';
+import {themeStorage} from './data/theme.js';
+import {FooterComponent} from '../js/components/footer-component.js';
 
-export {Tooltip} from './tooltip.js';
+export {Tooltip} from './components/tooltip.js';
 
 let footerElement = document.querySelector('#footer-component');
 

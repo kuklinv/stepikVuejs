@@ -7,8 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { themeStorage } from './theme.js';
-import { FooterComponent } from './footer-component.js';
+import { themeStorage } from './data/theme.js';
+import { FooterComponent } from './components/footer-component.js';
 new FooterComponent(document.querySelector('#footer-component'));
 themeStorage.moduleUpdate();
 // if its bee a _blank page - its listener need to reload all page with changed theme

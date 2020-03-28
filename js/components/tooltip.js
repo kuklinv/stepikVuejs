@@ -9,5 +9,3 @@ export class Tooltip {
         `;
     }
 }
-console.log('new');
-console.log('new1');
