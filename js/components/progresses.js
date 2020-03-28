@@ -1,11 +1,20 @@
+"use strict";
 var _a;
 function Skill(skill) {
-    return "<div class=\"skill-container\">\n                 <div style=\"flex: 1;\">" + skill.name + "</div>\n                 <div class=\"progress-wrapper\" style=\"margin-bottom: 0;flex: 4\">\n                      <div class=\"progress-line\" style=\"background-color:" + (skill.color !== null ? skill.color : '#4ebdd4') + ";width:" + skill.val + "\">              \n                      </div>\n                 </div>\n             </div>";
+    return `<div class="skill-container">
+                 <div style="flex: 1;">${skill.name}</div>
+                 <div class="progress-wrapper" style="margin-bottom: 0;flex: 4">
+                      <div class="progress-line" style="background-color:${skill.color !== null ? skill.color : '#4ebdd4'};width:${skill.val}">              
+                      </div>
+                 </div>
+             </div>`;
 }
 function SkillsBlock(skills) {
-    return "<div class=\"skills_block\">\n       " + skills.map(Skill).join('') + "\n</div>";
+    return `<div class="skills_block">
+       ${skills.map(Skill).join('')}
+</div>`;
 }
-var skills = [
+let skills = [
     {
         name: 'JS',
         val: '80%',

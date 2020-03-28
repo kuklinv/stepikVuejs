@@ -1,5 +1,5 @@
-import {themeStorage} from './theme.js';
-import {FooterComponent} from './footer-component.js';
+import {themeStorage} from './data/theme.js';
+import {FooterComponent} from './components/footer-component.js';
 
 new FooterComponent(document.querySelector('#footer-component'));
 themeStorage.moduleUpdate();

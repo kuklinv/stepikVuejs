@@ -1,7 +1,7 @@
 var _a;
-import { themeStorage } from './theme.js';
-import { FooterComponent } from './footer-component.js';
-export { Tooltip } from './tooltip.js';
+import { themeStorage } from './data/theme.js';
+import { FooterComponent } from '../js/components/footer-component.js';
+export { Tooltip } from './components/tooltip.js';
 let footerElement = document.querySelector('#footer-component');
 new FooterComponent(footerElement);
 let allContentWindow = document.querySelector(".content-wrapper"); // window
