@@ -17,9 +17,10 @@
     width: 95%;
 }
 .film-card{
-    width: 50%;
-    margin: 0 auto;
+    width: 60%;
+    margin: 1% auto 0;
     min-height: 200px;
+    box-shadow: 10px 10px 10px rgba(128, 128, 128, 0.22);
 }
 .viewed-btn{
     cursor: pointer;
