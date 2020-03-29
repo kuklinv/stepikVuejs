@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <title>JS & VUE COURSE OF STEPIK VISUALIZATION</title>
-    <link rel="stylesheet" href="css/materialize.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-    />
-</head>
-<body>
-<nav>
-    <div id="nav" class="nav-wrapper navbar-fixed indigo-theme">
-        <ul class="left">
-            <li><a href="index.html">HOME</a></li>
-            <li><a href="templates/data.html">DATA</a></li>
-            <li><a href="templates/search.html">SEARCH</a></li>
-        </ul>
-        <a
-                id="edit"
-                class="right btn-floating btn-large pulse"
-                style="background-color:#4ebdd4;margin-top: 5px;margin-right:15px;cursor: pointer"
-        >
-            <i class="material-icons">edit</i>
-        </a>
-    </div>
-</nav>
+import {NavComponent} from "./nav.component";
+
+export  class Main {
+    constructor({element}) {
+        this._element = element;
+        this._render();
+        this._initNavigation();
+    }
+
+    _initNavigation(){
+        this.navigation = new NavComponent({this._element.querySelector('.navigation')});
+    }
+    _render(){
+        this._element.innerHTML = `
+<div class="maincontent">
+    <nav class="navigation"></nav>
 
 <div class="content-wrapper indigo-theme">
     <ul class="menu-btn">
@@ -150,15 +137,7 @@
 </div>
 
 <div id="footer-component"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-<script type="module" src="js/index.js"></script>
-<script type="module" src="js/components/footer-component.js"></script>
-<script type="module" src="js/components/tooltip.js"></script>
-<script src="js/components/header.js"></script>
-<script src="js/components/progresses.js"></script>
-<script src="js/components/tabs.js"></script>
-
-</body>
-</html>
+</div>
+        `;
+    }
+}
