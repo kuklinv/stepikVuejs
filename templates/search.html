@@ -9,38 +9,34 @@
 </head>
 <body>
 
-    <div id="search">
+<div id="search">
 
-        <a class="viewed-btn btn-floating waves-effect"><i class="material-icons">turned_in_not</i></a>
+    <a class="viewed-btn btn-floating waves-effect"><i class="material-icons">turned_in_not</i></a>
 
-        <div class="viewed-menu card" style="display: none">
-            <ul>
-                <li>
-                    <span>first</span>
-                    <a class="btn btn-small">удалить</a>
-                </li>
-                <li>second</li>
-                <li>third</li>
-            </ul>
-        </div>
-
-        <h5>Привет</h5>
-
-        <div id="search-console">
-            <input type="text" id="search-input" style="color: #595959">
-        </div>
-
-
+    <div class="viewed-menu card" style="display: none">
+        <ul>
+            <li>
+                <span>first</span>
+                <a class="btn btn-small">удалить</a>
+            </li>
+            <li>second</li>
+            <li>third</li>
+        </ul>
     </div>
 
+    <h5>{{header}}</h5>
+    <h6>you search: "{{request}}"</h6>
 
-    <script src="https://unpkg.com/vue"></script>
+    <div id="search-console">
+        <input type="text" id="search-input" style="color: #595959" v-model="request">
+    </div>
+    <span></span>
+    <div>{{searching}}</div>
 
-    <script>
-        let vm = new Vue({
-            //опции нашего приложения
-        })
-    </script>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="../js/search.js"></script>
 
 </body>
 </html>
