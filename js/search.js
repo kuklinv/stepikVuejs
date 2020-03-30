@@ -22,6 +22,14 @@ let vm = new Vue({
     computed: {
         searching() {
             return this.request === '' || this.request === initSearch ? 'nothing jet    ' : `search:${this.request}`;
+        },
+        filteredFilms() {
+            if (this.request !== initSearch && this.request !== "" && this.request !== " ") {
+                return this.films.filter(el => el.title.toLowerCase().includes(this.request.toLowerCase()));
+            }
+            else {
+                return this.films;
+            }
         }
     },
     methods: {
