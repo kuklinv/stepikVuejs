@@ -13,6 +13,6 @@ let vm = new Vue({
         }
     },
     async mounted() {
-        this.films = await fetch('http https://swapi.co/api/films/').then(res => res.json()).then(data => data.results);
+        this.films = await fetch('https://swapi.co/api/films/').then(res => res.json()).then(data => data.results);
     }
 });

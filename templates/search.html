@@ -32,8 +32,8 @@
     <span style="display: block; height: 50px"></span>
     <h6>you search: "{{searching}}"</h6>
     <h5>list of films</h5>
-    <div class="film-list film-card">
-        <p>item</p>
+    <div class="film-list film-card" v-for="(film, i) in films" v-bind:id="i">
+        <p>{{++i}}. {{film.title}}</p>
     </div>
 
 </div>

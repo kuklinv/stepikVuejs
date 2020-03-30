@@ -23,7 +23,7 @@ let vm = new Vue({
     },
     mounted() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.films = yield fetch('http https://swapi.co/api/films/').then(res => res.json()).then(data => data.results);
+            this.films = yield fetch('https://swapi.co/api/films/').then(res => res.json()).then(data => data.results);
         });
     }
 });
