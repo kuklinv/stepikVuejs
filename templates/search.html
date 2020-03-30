@@ -18,7 +18,7 @@
         <ul v-if="bookmarkedFilms.length > 0">
             <li v-for="(film, i) in bookmarkedFilms">
                 <span>{{++i}}: {{film.title}}</span>
-                <a class="btn btn-small">delete</a>
+                <a class="btn btn-small" @click="deleteFilm(film)">delete</a>
             </li>
         </ul>
         <span v-else=>You not have bookmarked films</span>
@@ -34,7 +34,7 @@
     <h5>list of films</h5>
     <div class="film-list film-card" v-for="(film, i) in films" v-bind:id="i">
         <p>{{++i}}. {{film.title}}</p>
-        <a class="btn moves-effect" @click="bookmarkedFilms.push(film)">add to bookmark</a>
+        <a class="btn moves-effect" @click="addFilmToBookmark(film)">add to bookmark</a>
     </div>
 
 </div>

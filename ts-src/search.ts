@@ -1,3 +1,5 @@
+import set = Reflect.set;
+
 const initSearch = 'what you search?';
 
 let vm = new Vue({
@@ -7,11 +9,25 @@ let vm = new Vue({
         request: initSearch,
         films: [],
         showViewMenu: false,
-        bookmarkedFilms:[]
+        bookmarkedFilms: []
     },
     computed: {
         searching() {
             return this.request === '' || this.request === initSearch ? 'nothing jet    ' : `search:${this.request}`;
+        }
+    },
+    methods: {
+        addFilmToBookmark(film) {
+            if (!this.bookmarkedFilms.find(el => el.title === film.title)) {
+                this.bookmarkedFilms.push(film);
+            }
+            this.showViewMenu = true;
+            setTimeout(()=>{
+                this.showViewMenu = false;
+            }, 1000);
+        },
+        deleteFilm({title}){
+            this.bookmarkedFilms = this.bookmarkedFilms.filter(el => el.title != title);
         }
     },
     async mounted() {

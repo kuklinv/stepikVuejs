@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var set = Reflect.set;
 const initSearch = 'what you search?';
 let vm = new Vue({
     el: '#search',
@@ -21,6 +22,20 @@ let vm = new Vue({
     computed: {
         searching() {
             return this.request === '' || this.request === initSearch ? 'nothing jet    ' : `search:${this.request}`;
+        }
+    },
+    methods: {
+        addFilmToBookmark(film) {
+            if (!this.bookmarkedFilms.find(el => el.title === film.title)) {
+                this.bookmarkedFilms.push(film);
+            }
+            this.showViewMenu = true;
+            setTimeout(() => {
+                this.showViewMenu = false;
+            }, 1000);
+        },
+        deleteFilm({ title }) {
+            this.bookmarkedFilms = this.bookmarkedFilms.filter(el => el.title != title);
         }
     },
     mounted() {
