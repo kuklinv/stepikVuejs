@@ -11,27 +11,31 @@
 
 <div id="search">
 
-    <a class="viewed-btn btn-floating waves-effect"><i class="material-icons">turned_in_not</i></a>
+    <a class="viewed-btn btn-floating waves-effect" v-on:click="showViewMenu = !showViewMenu">
+        <i class="material-icons">turned_in_not</i></a>
 
-    <div class="viewed-menu card" style="display: none">
-        <ul>
-            <li>
-                <span>first</span>
-                <a class="btn btn-small">удалить</a>
+    <div class="viewed-menu card" v-if="showViewMenu">
+        <ul v-if="bookmarkedFilms.length > 0">
+            <li v-for="(film, i) in bookmarkedFilms">
+                <span>{{++i}}: {{film.title}}</span>
+                <a class="btn btn-small" @click="deleteFilm(film)">delete</a>
             </li>
-            <li>second</li>
-            <li>third</li>
         </ul>
+        <span v-else=>You not have bookmarked films</span>
     </div>
 
     <h5>{{header}}</h5>
-    <h6>you search: "{{request}}"</h6>
 
     <div id="search-console">
-        <input type="text" id="search-input" style="color: #595959" v-model="request">
+        <input type="text" id="search-input" style="color: #595959" v-model="request" @focus="request=''">
     </div>
-    <span></span>
-    <div>{{searching}}</div>
+    <span style="display: block; height: 50px"></span>
+    <h6>you search: "{{searching}}"</h6>
+    <h5>list of films</h5>
+    <div class="film-list film-card" v-for="(film, i) in filteredFilms" v-bind:id="i">
+        <p>{{++i}}. {{film.title}}</p>
+        <a class="btn moves-effect" @click="addFilmToBookmark(film)">add to bookmark</a>
+    </div>
 
 </div>
 
