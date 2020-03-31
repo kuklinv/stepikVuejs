@@ -1,5 +1,5 @@
 export class Tooltip {
-    constructor(element) {
+    constructor({element}) {
         this.element = element;
         this.render();
     }
