@@ -1,8 +1,12 @@
+import {Tooltip} from "./tooltip";
 
 export class FooterComponent {
     constructor(element) {
         this.element = element;
         this.render();
+        this._tooltip = new Tooltip({
+            document.querySelector('.tooltip_wrapper')
+        });
     }
     render(){
         this.element.innerHTML = `
@@ -16,10 +20,6 @@ export class FooterComponent {
             </div>
         </div>
     </div>
-
-    <script>
-        console.log("its footer")
-    </script>
 </footer>
         `;
     }
